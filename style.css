@@ -1,4 +1,43 @@
 body{
-    font-family: Verdana;
+    font-family: Georgia, 'Times New Roman', Times, serif; 
     font-size: 1.5em;
+    background-color: rgb(109, 135, 136);
+    width: fit-content;
+    margin: auto;
+    margin-top: 10px;
+
+    padding-right: 20px;
+    padding-left: 20px;
+    padding-bottom: 1mm;
+    outline: auto;
+}
+
+#myH1{
+    font-family: Georgia, 'Times New Roman', Times, serif; 
+    font-weight: bold;
+    padding-left: 10%;
+}
+
+h2{
+    background-color: rgb(109, 127, 124);
+}
+#dateFrom, #dateBack, #go{
+    font-family: sans-serif;
+    font-style: italic;
+    background-color: rgb(162, 175, 208);
+    font-size: 18px
+
+}
+#dateBack{
+    margin-left: 30px;
+}
+#go{
+    margin-top: 25px;
+    margin-left: 37%;
+}
+.br{
+    line-height: 50px;
+}
+div{
+    margin-top: 5px;
 }

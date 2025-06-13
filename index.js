@@ -1,49 +1,19 @@
-const weatherData = {'2025-06-08': ['Rome', '15'], '2025-06-09': ['Brisbane', '15'], '2025-06-10': ['Mendoza', '15'], '2025-06-11': ['Rome', '15'], '2025-06-12': ['Rome', '15'], '2025-06-13': ['Rome', '15'], '2025-06-14': ['Vienna', '15'], '2025-06-15': ['Vienna', '15'], '2025-06-16': ['Brisbane', '15'], '2025-06-17': ['Vienna', '15'], '2025-06-18': ['Vienna', '15'], '2025-06-19': ['Buenos Aires', '15'], '2025-06-20': ['Buenos Aires', '15'], '2025-06-21': ['Buenos Aires', '15'], '2025-06-22': ['C�rdoba', '15'], '2025-06-23': ['Toronto', '15'], '2025-06-24': ['Toronto', '15'], '2025-06-25': ['Athens', '15'], '2025-06-26': ['Valletta', '15']}
+const weatherData = {'2025-06-08': ['Rome', '15'], '2025-06-09': ['Brisbane', '15'], '2025-06-10': ['Mendoza', '15'], '2025-06-11': ['Rome', '15'], '2025-06-12': ['Rome', '15'], '2025-06-13': ['Rome', '15'], '2025-06-14': ['Vienna', '15'], '2025-06-15': ['Vienna', '15'], '2025-06-16': ['Brisbane', '15'], '2025-06-17': ['Vienna', '15'], '2025-06-18': ['Vienna', '15'], '2025-06-19': ['Buenos Aires', '15'], '2025-06-20': ['Buenos Aires', '15'], '2025-06-21': ['Buenos Aires', '15'], '2025-06-22': ['Cordoba', '15'], '2025-06-23': ['Toronto', '15'], '2025-06-24': ['Toronto', '15'], '2025-06-25': ['Athens', '15'], '2025-06-26': ['Valletta', '15']}
+// dataset format 2025-06-10
 
-console.log(`example dates 20250609, 20250615`);
-let dateFrom
-let dateBack
-//dataset format 2025-06-10
-
-document.getElementById("dateFromButton").onclick = function(){ 
-    dateFrom = document.getElementById("dateFrom").value;
-    dateFrom = formatDate(dateFrom);
-
-    console.log("date From: " + dateFrom); 
-}
-
-document.getElementById("dateBackButton").onclick = function(){
-    dateBack = document.getElementById("dateBack").value;
-    dateBack = formatDate(dateBack);
-
-    console.log("date To: " + dateBack); 
-}
-
-document.getElementById("generateButton").onclick = function(){
+document.getElementById("go").onclick = function(){
+    let dateFrom = document.getElementById("dateFrom").value;
+    let dateBack = document.getElementById("dateBack").value;
 
     let dates = getDateRange(dateFrom, dateBack);
     console.log(`dates: ${dates}`);
 
     let winner = bestLocation(dates, weatherData);
-    console.log(`best location: ${winner}`);
 
-    document.getElementById("myH2").textContent = 
-    `For dates ${dateFrom} to ${dateBack}:`;
-
+    //document.getElementById("myH2").textContent = `For dates ${dateFrom} to ${dateBack}:`;
     document.getElementById("myH2").textContent = `the nicest weather is in ${winner}!!`;
-
-    console.log(`recommended city is ${winner}`);
 }
 
-
-function formatDate(date){
-    stringBuilder = "";
-    for (i=0; i<date.length; i++){
-        if (i==4 || i==6) { stringBuilder += '-'} 
-        stringBuilder += date[i];
-    }
-    return stringBuilder
-}
 
 function getDateRange(startDateStr, endDateStr) {
   const dates = [];
@@ -68,11 +38,11 @@ function getDateRange(startDateStr, endDateStr) {
 }
 
 function bestLocation(dates){
-    //dict format city : score
+    // dict format city : score
     let dict = {};
 
     for (let d of dates){
-        //cityScore format tokyo, 10
+        // cityScore format tokyo, 10
         let cityScore = weatherData[d];
         let city = cityScore[0];
         let dataScore = cityScore[1];
@@ -86,7 +56,7 @@ function bestLocation(dates){
     }
     let keys = Object.keys(dict);
 
-    //best = [tokyo, 10]
+    // best = [tokyo, 10]
     let best = [keys[0], dict[keys[0]]]
 
     for (let key of keys){
