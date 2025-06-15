@@ -26,10 +26,6 @@ function getDates(startDateStr, endDateStr) {
   const startDate = new Date(startDateStr + "T12:00:00");// avoids local timezone issues 
   const endDate = new Date(endDateStr + "T12:00:00");
 
-  // prevent DST issues
-  startDate.setHours(0, 0, 0, 0);
-  endDate.setHours(0, 0, 0, 0);
-
   while (startDate <= endDate) {
     // get string (YYYY-MM-DD T 00:00:00.000Z)
     const formatted = startDate.toISOString().split('T')[0];
