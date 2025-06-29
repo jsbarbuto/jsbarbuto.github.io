@@ -21,14 +21,14 @@ body{
 h2{
     background-color: rgb(109, 127, 124);
 }
-#dateFrom, #dateBack, #go{
+#dateFrom, #dateTo, #go{
     font-family: sans-serif;
     font-style: italic;
     background-color: rgb(162, 175, 208);
     font-size: 18px
 
 }
-#dateBack{
+#dateTo{
     margin-left: 30px;
 }
 #go{

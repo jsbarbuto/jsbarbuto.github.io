@@ -1,21 +1,38 @@
 const weatherData = {'2025-06-08': ['Rome', '15'], '2025-06-09': ['Brisbane', '15'], '2025-06-10': ['Mendoza', '15'], '2025-06-11': ['Rome', '15'], '2025-06-12': ['Rome', '15'], '2025-06-13': ['Rome', '15'], '2025-06-14': ['Vienna', '15'], '2025-06-15': ['Vienna', '15'], '2025-06-16': ['Brisbane', '15'], '2025-06-17': ['Vienna', '15'], '2025-06-18': ['Vienna', '15'], '2025-06-19': ['Buenos Aires', '15'], '2025-06-20': ['Buenos Aires', '15'], '2025-06-21': ['Buenos Aires', '15'], '2025-06-22': ['Cordoba', '15'], '2025-06-23': ['Toronto', '15'], '2025-06-24': ['Toronto', '15'], '2025-06-25': ['Athens', '15'], '2025-06-26': ['Valletta', '15']}
 // dataset format 2025-06-10
 
-let dateRange = getDateRangeFromData(weatherData);
+let dateRange = firstDateLastDate(weatherData);
 
 document.getElementById("p2").textContent = `available dates between ${dateRange[0]} - ${dateRange[1]}` 
 
 
 document.getElementById("go").onclick = function(){
-    let dateFrom = document.getElementById("dateFrom").value;
-    let dateBack = document.getElementById("dateBack").value;
+    let dateFrom, dateTo;
 
-    let dates = getDates(dateFrom, dateBack);
+    dateFrom = document.getElementById("dateFrom").value;
+    dateTo = document.getElementById("dateTo").value;
+
+    if (new Date(dateFrom) > new Date(dateTo)) {//if from date is after before date
+        let dateFromCopy = dateFrom;
+        dateFrom = dateTo;
+        dateTo = dateFromCopy;
+
+        document.getElementById("dateFrom").value = dateFrom;
+        document.getElementById("dateTo").value = dateTo;
+        
+    }
+
+    if (weatherData[dateFrom] == undefined || weatherData[dateTo] == undefined) {
+        window.alert("Please include available dates");
+        return;
+    }
+
+    let dates = getDates(dateFrom, dateTo);
     console.log(`dates: ${dates}`);
 
     let winner = bestLocation(dates, weatherData);
 
-    //document.getElementById("myH2").textContent = `For dates ${dateFrom} to ${dateBack}:`;
+    //document.getElementById("myH2").textContent = `For dates ${dateFrom} to ${dateTo}:`;
     document.getElementById("myH2").textContent = `the nicest weather is in ${winner}!!`;
 }
 
@@ -42,7 +59,8 @@ function getDates(startDateStr, endDateStr) {
   return dates;
 }
 
-function getDateRangeFromData(data){
+
+function firstDateLastDate(data){
     let latest = "";
     let earliest = "";
     
