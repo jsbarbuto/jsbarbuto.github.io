@@ -10,6 +10,9 @@ body{
     padding-left: 20px;
     padding-bottom: 1mm;
     outline: auto;
+
+    text-align: center;
+
 }
 
 #myH1{
@@ -25,12 +28,16 @@ h2{
     font-family: sans-serif;
     font-style: italic;
     background-color: rgb(162, 175, 208);
-    font-size: 18px
+    font-size: 20px
 
 }
 #dateTo{
     margin-left: 30px;
 }
+#p3{
+    font-size: 18px;
+}
+/* 
 #go{
     margin-top: 25px;
     margin-left: 37%;
@@ -40,4 +47,4 @@ h2{
 }
 div{
     margin-top: 5px;
-}
+} */

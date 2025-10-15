@@ -18,12 +18,6 @@ document.getElementById("dateTo").max = dateRange[1];
 //calculating best location based on either of these conditions:
 //condtion 1
 document.getElementById("go").onclick = recommendCity;
-//condition 2
-document.getElementById("dateTo").addEventListener("input", function() {
-    if (this.value !== "") {
-        recommendCity();
-    }
-});
 
 
 document.getElementById("clear").onclick = function() {
