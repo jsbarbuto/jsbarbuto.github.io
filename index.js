@@ -5,13 +5,41 @@ let dateRange = firstDateLastDate(weatherData);
 
 document.getElementById("p2").textContent = `available dates between ${dateRange[0]} - ${dateRange[1]}` 
 
-document.getElementById("go").onclick = function(){
+//set range
+document.getElementById("dateFrom").value = dateRange[0];
+//document.getElementById("dateTo").value = dateRange[1];
+
+document.getElementById("dateFrom").min = dateRange[0]; 
+document.getElementById("dateFrom").max = dateRange[1];
+
+document.getElementById("dateTo").min = dateRange[0]; 
+document.getElementById("dateTo").max = dateRange[1];
+
+//calculating best location based on either of these conditions:
+//condtion 1
+document.getElementById("go").onclick = recommendCity;
+//condition 2
+document.getElementById("dateTo").addEventListener("input", function() {
+    if (this.value !== "") {
+        recommendCity();
+    }
+});
+
+
+document.getElementById("clear").onclick = function() {
+    document.getElementById("dateTo").value = "";
+    recommendCity();
+}
+
+function recommendCity(){
 
     let dateFrom = document.getElementById("dateFrom").value;
     let dateTo = document.getElementById("dateTo").value;
 
     [dateFrom, dateTo] = dateValidator(dateFrom, dateTo);
 
+    console.log(`dateFrom: ${dateFrom}`);
+    console.log(`dateTo: ${dateTo}`);
 
     if (weatherData[dateFrom] == undefined || weatherData[dateTo] == undefined) {
         window.alert("Please include available dates");

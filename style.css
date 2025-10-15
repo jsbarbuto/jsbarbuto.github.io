@@ -21,7 +21,7 @@ body{
 h2{
     background-color: rgb(109, 127, 124);
 }
-#dateFrom, #dateTo, #go{
+#dateFrom, #dateTo, #go, #clear{
     font-family: sans-serif;
     font-style: italic;
     background-color: rgb(162, 175, 208);
