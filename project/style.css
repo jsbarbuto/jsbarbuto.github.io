@@ -79,6 +79,41 @@ body {
     left: 30px;
 }
 
+
+.tail {
+    position: absolute;
+    bottom: 5px;          /* aligns with body */
+    left: 10px;           /* adjust to connect to body */
+    width: 10px;
+    height: 30px;
+    background: black;
+    border-radius: 50% 50% 50% 50%; 
+    transform-origin: bottom center;
+    animation: tailSwing 0.8s infinite ease-in-out;
+}
+
+/* Add a curl using pseudo-element */
+.tail::after {
+    content: '';
+    position: absolute;
+    width: 8px;
+    height: 20px;
+    background: black;
+    border-radius: 50% 50% 50% 50%;
+    bottom: 20px;      /* attaches to top of main tail */
+    left: 2px;
+    transform: rotate(45deg);
+}
+
+/* Tail swinging animation */
+@keyframes tailSwing {
+    0%, 100% { transform: rotate(-60deg); }
+    50% { transform: rotate(-20deg); }
+}
+
+
+
+
 /* Body */
 .body {
     width: 20px;
