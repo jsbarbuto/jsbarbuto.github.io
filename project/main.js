@@ -104,17 +104,17 @@ function createObstacle() {
     if (rand < 0.5) {
     // House
     obs.classList.add("house");
-    obs.speed = 7;  // was 5
+    obs.speed = 10;  // was 5
     obs.value = 5;
     } else if (rand < 0.8) {
         // Hotel
         obs.classList.add("hotel");
-        obs.speed = 8;  // was 5
-        obs.value = 5;
+        obs.speed = 12;  // was 5
+        obs.value = 7;
     } else {
         // High-value fast obstacle
         obs.classList.add("hotel");
-        obs.speed = 12; // keep it fast
+        obs.speed = 20; // keep it fast
         obs.value = 15;
         obs.style.background = "orange";
         obs.style.borderTop = "5px solid darkorange";
@@ -250,7 +250,14 @@ function drawChart() {
 
 // Update every second
 setInterval(() => {
-    let change = (Math.random() - 0.5) * 10;
+    let change = (Math.random() - 0.5) * 50;
+
+    change += marketValue * 0.02//add buffer
+
+    if (Math.random() < 0.1) { // 10% chance
+    change += (Math.random() - 0.5) * 20; // rare big jump or drop
+    }
+
     marketValue = Math.max(20, marketValue + change);
 
     marketHistory.push(marketValue);
