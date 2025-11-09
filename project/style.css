@@ -1,0 +1,185 @@
+body {
+    margin: 0;
+    overflow: hidden;
+    font-family: sans-serif;
+}
+
+#game {
+    width: 100vw;
+    height: 100vh;
+    background:
+        repeating-linear-gradient(
+            90deg,
+            #2e8b57 0px,
+            #2e8b57 60px,
+            #228b22 60px,
+            #228b22 120px
+        ),
+        #87CEEB;
+    background-size: 100% 30%, 100% 100%;
+    background-position: bottom, top;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+
+#player {
+    position: absolute;
+    bottom: 50px;
+    left: 100px;
+    width: 50px;
+}
+
+/* Hat container */
+.hat {
+    position: relative;
+    width: 50px;
+    height: 35px;
+}
+
+/* Hat top (rounded rectangle) */
+.hat-top {
+    width: 35px;
+    height: 25px;
+    background: #222;
+    border-radius: 12px;
+    position: absolute;
+    top: 0;
+    left: 7px;
+}
+
+/* Hat brim (oval) */
+.hat-brim {
+    width: 50px;
+    height: 8px;
+    background: #111;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 0;
+}
+
+/* Head */
+.head {
+    width: 50px;
+    height: 50px;
+    background: black;
+    border-radius: 50%;
+    position: relative;
+    top: -5px; /* slightly overlap with hat brim */
+}
+
+/* Monocle */
+.monocle {
+    width: 12px;
+    height: 12px;
+    border: 2px solid gold;
+    border-radius: 50%;
+    position: absolute;
+    top: 15px;
+    left: 30px;
+}
+
+/* Body */
+.body {
+    width: 20px;
+    height: 30px;
+    background: black;
+    position: relative;
+    top: -5px;
+    left: 15px;
+    border-radius: 4px;
+}
+
+
+
+
+
+
+
+/* House obstacle */
+.obstacle.house {
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    bottom: 50px;
+}
+
+/* House roof */
+.obstacle.house::before {
+    content: '';
+    position: absolute;
+    width: 0;                       /* triangle width is from borders */
+    border-left: 70px solid transparent;   /* half of roof width */
+    border-right: 70px solid transparent;  /* half of roof width */
+    border-bottom: 70px solid green;       /* roof height */
+    top: -40px;                     /* move it above the body by its own height */
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+
+
+
+/* House body */
+.obstacle.house::after {
+    content: '';
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    background: green;
+    top: 0;
+    left: 0;
+}
+
+/* Hotel obstacle */
+.obstacle.hotel {
+    width: 60px;
+    height: 120px;
+    background: red;
+    position: absolute;
+    bottom: 50px;
+    border-top: 10px solid darkred;
+    border-radius: 2px;
+}
+
+
+#money {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 24px;
+    color: gold;
+    font-weight: bold;
+}
+#stockPanel {
+    position: absolute;
+    top: 50px;
+    left: 10px;
+    width: 220px;
+    padding: 10px;
+    background: rgba(0,0,0,0.7);
+    border-radius: 8px;
+    color: white;
+    font-size: 14px;
+    z-index: 9999; /* ensures it appears above everything */
+}
+
+#stockPanel canvas {
+    background: rgba(255,255,255,0.1); /* slight background so line shows */
+    border: 1px solid white;
+}
+
+#stockPanel button {
+    width: 80px;
+    margin: 5px 10px 0 0;
+    padding: 4px;
+    cursor: pointer;
+    border-radius: 4px;
+    border: none;
+    background: #444;
+    color: white;
+}
+
+#stockPanel button:hover {
+    background: #666;
+}
